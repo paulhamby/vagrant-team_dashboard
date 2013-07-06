@@ -1,7 +1,8 @@
 class team_dashboard {
 
   package {  ['git', 'libmysqlclient-dev', ]:
-    ensure => installed,
+    ensure  => installed,
+    require => Exec['apt-get update'];
   }
 
   vcsrepo { "/vagrant/team_dashboard":
