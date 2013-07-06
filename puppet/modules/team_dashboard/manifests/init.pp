@@ -23,7 +23,7 @@ class team_dashboard {
   }
 
   exec { 'install-team_dashboard':
-    #path => '/usr/bin:/usr/sbin:/bin:/usr/local/rvm/bin/rvm',
+    path => '/usr/bin:/usr/sbin:/bin:/usr/local/rvm/bin',
     command => "bash -c 'cd /vagrant/team_dashboard && bundle install && rake db:create && rake db:migrate && touch /vagrant/team_dashboard_installed'",
     creates => '/vagrant/team_dashboard_installed',
     require => [ File['/vagrant/team_dashboard/config/database.yml'] ],
