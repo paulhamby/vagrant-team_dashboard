@@ -17,6 +17,14 @@ class rvm-install {
       ensure => 'present',
       default_use => true;
   }
+
+  rvm_gem {
+    'bundler':
+      name => 'bundler',
+      ruby_version => 'ruby-1.9.3-p429',
+      ensure => latest,
+      require => Rvm_system_ruby['ruby-1.9.3-p429'];
+  }
 }
 
 include system-update
