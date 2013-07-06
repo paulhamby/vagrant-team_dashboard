@@ -1,6 +1,6 @@
 class team_dashboard {
 
-  package { 'git':
+  package {  ['git', 'libmysqlclient-dev', ]:
     ensure => installed,
   }
 
@@ -14,16 +14,18 @@ class team_dashboard {
     revision => 'master',
   }
 
-#cd team_dashboard
-#bundle install
-#cp config/database.example.yml config/database.yml
-#rake db:create && rake db:migrate
+  file { "/vagrant/team_dashboard/config/database.yml":
+    owner   => root,
+    group   => root,
+    source  => 'puppet:///modules/team_dashboard/config/database.yml',
+    require => [ Vcsrepo['vagrant/team_dashboard'] ],
+  }
 
   exec { 'install-team_dashboard':
     #path => '/usr/bin:/usr/sbin:/bin:/usr/local/rvm/bin/rvm',
-    command => "bash -c 'cd /vagrant/team_dashboard && bundle install && rake db:create && rake db:migrate && touch /tmp/team_dashboard_installed'",
+    command => "bash -c 'cd /vagrant/team_dashboard && bundle install && rake db:create && rake db:migrate && touch /vagrant/team_dashboard_installed'",
     creates => '/vagrant/team_dashboard_installed',
-    require => [ Vcsrepo['/vagrant/team_dashboard'] ],
+    require => [ File['/vagrant/team_dashboard/config/database.yml'] ],
   }
 
   file { "/etc/unicorn":
@@ -47,4 +49,14 @@ class team_dashboard {
     source  => 'puppet:///modules/team_dashboard/unicorn.init',
     require => [ File['/etc/unicorn'] ],
   }
+
+  service { "unicorn":
+    name       => "unicorn",
+    ensure     => running,
+    enable     => true,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => [ File["/etc/init.d/unicorn"], ],
+  }
+
 }
