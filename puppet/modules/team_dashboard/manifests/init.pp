@@ -18,7 +18,7 @@ class team_dashboard {
     owner   => root,
     group   => root,
     source  => 'puppet:///modules/team_dashboard/config/database.yml',
-    require => [ Vcsrepo['vagrant/team_dashboard'] ],
+    require => [ Vcsrepo['/vagrant/team_dashboard'] ],
   }
 
   exec { 'install-team_dashboard':
