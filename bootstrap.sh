@@ -2,11 +2,11 @@
 
 MYSQL_PASSWORD="password"
 
-apt-get update
-sudo apt-get -y install debconf-utils
-  echo "mysql-server-5.5 mysql-server/root_password password $MYSQL_PASSWORD" | debconf-set-selections
-  echo "mysql-server-5.5 mysql-server/root_password_again password $MYSQL_PASSWORD" | debconf-set-selections
-  apt-get install -y mysql-server curl git libxml2-dev libxslt-dev libmysqlclient-dev build-essential
+#apt-get update
+#sudo apt-get -y install debconf-utils
+#  echo "mysql-server-5.5 mysql-server/root_password password $MYSQL_PASSWORD" | debconf-set-selections
+#  echo "mysql-server-5.5 mysql-server/root_password_again password $MYSQL_PASSWORD" | debconf-set-selections
+#  apt-get install -y mysql-server curl git libxml2-dev libxslt-dev libmysqlclient-dev build-essential
 #sign your soul away to rvm.io...
 curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3-p429
 source /usr/local/rvm/scripts/rvm

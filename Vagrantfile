@@ -9,9 +9,15 @@ Vagrant.configure("2") do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   
   config.vm.box = "precise32"
-  config.vm.provision :shell, :path => "bootstrap.sh"
   config.vm.network :forwarded_port, host: 4567, guest: 3000
 
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path = "puppet/modules"
+    puppet.options = ['--verbose']
+  end
+
+#  config.vm.provision :shell, :path => "bootstrap.sh"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
