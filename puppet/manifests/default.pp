@@ -20,8 +20,9 @@ class rvm-install {
 
   rvm_system_ruby {
     'ruby-1.9.3-p429':
-      ensure => 'present',
-      default_use => false;
+      ensure      => 'present',
+      default_use => false,
+      require     => Exec['apt-get update'];
   }
 
   rvm_gem {
@@ -36,3 +37,5 @@ class rvm-install {
 include system-update
 include mysql
 include rvm-install
+include vcsrepo
+include team_dashboard
