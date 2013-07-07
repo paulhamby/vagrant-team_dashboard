@@ -14,6 +14,6 @@ vagrant box add precise32 http://files.vagrantup.com/precise32.box
 
 git clone https://github.com/paulhamby/vagrant-team_dashboard.git  
 mkdir team_dashboard  
-cp vagrant-team_dashboard/* team_dashboard  
+cp -a vagrant-team_dashboard/* team_dashboard  
 cd team_dashboard  
 vagrant up  
