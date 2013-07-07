@@ -17,7 +17,7 @@ class team_dashboard {
   file { "/vagrant/team_dashboard/config/database.yml":
     owner   => root,
     group   => root,
-    source  => 'puppet:///modules/team_dashboard/config/database.yml',
+    source  => '/vagrant/puppet/modules/team_dashboard/files/database.yml',
     require => [ Vcsrepo['/vagrant/team_dashboard'] ],
   }
 
@@ -38,7 +38,7 @@ class team_dashboard {
   file { "/etc/unicorn/team_dashboard.conf":
     owner  => root,
     group  => root,
-    source => 'puppet:///modules/team_dashboard/team_dashboard.conf',
+    source => '/vagrant/puppet/modules/team_dashboard/files/team_dashboard.conf',
     require => [ File['/etc/unicorn'] ],
   }
 
@@ -46,7 +46,7 @@ class team_dashboard {
     owner   => root,
     group   => root,
     mode    => 755,
-    source  => 'puppet:///modules/team_dashboard/unicorn.init',
+    source  => '/vagrant/puppet/modules/team_dashboard/files/unicorn.init',
     require => [ File['/etc/unicorn'] ],
   }
 
