@@ -11,8 +11,7 @@ vagrant-team_dashboard
 
 vagrant box add precise32 http://files.vagrantup.com/precise32.box
 
-Choose a directory to host the project ($dir)   
-cd $dir  
+
 git clone https://github.com/paulhamby/vagrant-team_dashboard.git  
 mkdir team_dashboard  
 cp vagrant-team_dashboard/* team_dashboard  
