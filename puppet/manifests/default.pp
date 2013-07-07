@@ -22,7 +22,6 @@ class rvm-install {
     'ruby-1.9.3-p429':
       ensure      => 'present',
       default_use => false,
-      require     => Exec['apt-get update'];
   }
 
   rvm_gem {
