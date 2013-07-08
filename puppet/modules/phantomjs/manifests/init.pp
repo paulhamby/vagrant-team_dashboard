@@ -1,5 +1,9 @@
 class phantomjs($version = "1.9.1" ) {
 
+    package { ["fontconfig", ]:
+      ensure => installed,
+    }
+
     if $::architecture == "amd64" or $::architecture == "x86_64" {
         $platid = "x86_64"
     } else {
