@@ -3,7 +3,7 @@ class phantomjs($version = "1.9.1" ) {
     if $::architecture == "amd64" or $::architecture == "x86_64" {
         $platid = "x86_64"
     } else {
-        $platid = "x86"
+        $platid = "i686"
     }
 
     $filename = "phantomjs-${version}-linux-${platid}.tar.bz2"
@@ -14,7 +14,7 @@ class phantomjs($version = "1.9.1" ) {
 
     exec { "download-${filename}" : 
         path => '/usr/bin:/usr/sbin:/bin',
-        command => "wget http://phantomjs.googlecode.com/files/${filename} -O ${filename}",
+        command => "wget https://phantomjs.googlecode.com/files/${filename} -O ${filename}",
         cwd => $phantom_src_path,
         creates => "${phantom_src_path}${filename}",
         require => File[$phantom_src_path]
