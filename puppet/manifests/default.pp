@@ -1,19 +1,5 @@
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
-class system-update {
-
-  exec { 'apt-get update':
-    command => 'apt-get update',
-  }
-
-  $sysPackages = [ "build-essential" ]
-  package { $sysPackages:
-    ensure => "installed",
-    require => Exec['apt-get update'],
-  }
-
-}
-
 class rvm-install {
 
   include rvm
@@ -33,7 +19,6 @@ class rvm-install {
   }
 }
 
-include system-update
 include mysql
 include rvm-install
 include phantomjs
