@@ -18,3 +18,4 @@ Install git (For Windows install git with ssh from http://git-scm.com/downloads)
 MySQL installed with https://github.com/example42/puppet-mysql  
 RVM installed with https://github.com/blt04/puppet-rvm  
 VCSRepo installed with https://github.com/puppetlabs/puppetlabs-vcsrepo  
+PhantomJS installed with https://github.com/brhelwig/puppet-phantomjs

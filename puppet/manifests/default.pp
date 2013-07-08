@@ -36,5 +36,5 @@ class rvm-install {
 include system-update
 include mysql
 include rvm-install
-#include vcsrepo
+include phantomjs
 include team_dashboard
