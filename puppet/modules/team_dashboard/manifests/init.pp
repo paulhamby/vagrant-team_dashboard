@@ -1,6 +1,11 @@
 class team_dashboard {
 
-  package {  ['git', 'libmysqlclient-dev', 'build-essential', ]:
+  if ! defined(Package['build-essential'])      
+  { package { 'build-essential':
+    ensure => present } 
+  }
+
+  package {  ['git', 'libmysqlclient-dev', ]:
     ensure  => installed,
   }
 
